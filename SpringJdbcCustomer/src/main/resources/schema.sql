@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS customer (
+  id BIGSERIAL PRIMARY KEY,
+  full_name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  social_security_number VARCHAR(50) UNIQUE NOT NULL
+);

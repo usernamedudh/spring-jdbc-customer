@@ -1,0 +1,21 @@
+# yaml
+services:
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=customerdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - TZ=Europe/Kyiv   # заменить Europe/Kiev -> Europe/Kyiv или использовать UTC
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres-data:
